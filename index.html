@@ -1,75 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 
 <head>
   <meta charset="utf-8">
-  <title>Super Mario Bros JS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday 🎂</title>
 
   <link href="assets/css/reset.css" rel="stylesheet" />
   <link href="assets/css/stylesheet.css" rel="stylesheet" />
+  <link href="assets/css/birthday.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png"/>
-
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-101227805-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+  <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png" />
 </head>
 
 <body>
-  <div class="main">
-    <div class="description">
-      <div>
-        <h1>Mario</h1>
-        <h2>JS</h2>
-      </div>
+  <!-- ====================== 1. LOGIN ====================== -->
+  <section id="screen-login" class="screen active">
+    <div class="card">
+      <h1 id="login-title" class="title"></h1>
+      <p id="login-subtitle" class="subtitle"></p>
 
-      <div class="controls">
-        <h2>Controls</h2>
-        <h3>Move Left: &#8678; / A</h3>
-        <h3>Move Right: &#8680; / D</h3>
-        <h3>Jump: &#8679; / W / Spacebar</h3>
-      </div>
+      <label id="login-nama-label" class="field-label"></label>
+      <input id="login-nama" class="field" type="text" autocomplete="off" />
 
-      <div id="mute-button"></div>
-      <div class="fourth-one"> </div>
+      <label id="login-umur-label" class="field-label"></label>
+      <input id="login-umur" class="field" type="text" autocomplete="off" />
+
+      <p id="login-error" class="error-msg"></p>
+      <button id="login-btn" class="btn"></button>
     </div>
+  </section>
 
-    <canvas id="game-canvas" width="760" height="600"></canvas>
-    <audio id="background_music" autoplay loop>
+  <!-- ====================== 2. MENU ====================== -->
+  <section id="screen-menu" class="screen">
+    <div class="card">
+      <h1 id="menu-title" class="title big"></h1>
+      <p id="menu-subtitle" class="subtitle"></p>
+      <button id="menu-btn" class="btn letsgo"></button>
+    </div>
+  </section>
+
+  <!-- ====================== 3. SUB-GAME 1: PILIH FOTO ====================== -->
+  <section id="screen-subgame1" class="screen">
+    <div class="card wide">
+      <h2 id="sg1-pertanyaan" class="title"></h2>
+      <p id="sg1-petunjuk" class="subtitle"></p>
+      <div id="sg1-grid" class="photo-grid"></div>
+      <p id="sg1-error" class="error-msg"></p>
+      <button id="sg1-btn" class="btn"></button>
+    </div>
+  </section>
+
+  <!-- ====================== 4. GAME MARIO ====================== -->
+  <section id="screen-game" class="screen">
+    <div class="game-wrap">
+      <div id="mute-button"></div>
+      <canvas id="game-canvas" width="760" height="600"></canvas>
+      <p class="controls-hint">Gerak: &#8592; &#8594; / A D &nbsp;&nbsp;|&nbsp;&nbsp; Lompat: &#8593; / W / Spasi</p>
+    </div>
+    <audio id="background_music" loop>
       <source src="./assets/audio/music/mario_theme.mp3" type="audio/mp3" />
     </audio>
+  </section>
 
-    <div class="contact">
-      <div class="info">
-        <!--<h2>Recreated by</h2>-->
-      </div>
-
-      <div class="links">
-        <h2>Tyler Reichle</h2>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/tylerreichle/mario_js">
-        <img id="github" alt="github link" src="assets/images/github.png">
-      </a>
-
-        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/tyler-reichle-36b379130/">
-        <img id="linkedin" alt="linkedin link" src="assets/images/linkedin.png">
-      </a>
-      </div>
+  <!-- ====================== POP-UP UMUM (teks kustom) ====================== -->
+  <div id="popup" class="overlay">
+    <div class="card popup-card">
+      <h2 id="popup-title" class="title"></h2>
+      <p id="popup-text" class="popup-text"></p>
+      <button id="popup-btn" class="btn"></button>
     </div>
-
   </div>
+
+  <!-- ====================== POP-UP QUIZ MARIO ====================== -->
+  <div id="quiz" class="overlay">
+    <div class="card quiz-card">
+      <div class="qmark">?</div>
+      <h2 id="quiz-pertanyaan" class="title"></h2>
+      <div id="quiz-opsi" class="quiz-options"></div>
+      <p id="quiz-error" class="error-msg"></p>
+    </div>
+  </div>
+
+  <script src="assets/javascripts/jquery.min.js"></script>
+  <script src="config.js"></script>
+  <script src="assets/javascripts/bundle.js"></script>
+  <script src="app.js"></script>
 </body>
 
-<script src="assets/javascripts/jquery.min.js"></script>
-<script src="assets/javascripts/bundle.js"></script>
-
 </html>
-
-<!-- Mute icons made by Madebyoliver. http://www.flaticon.com/authors/madebyoliver -->
