@@ -8,45 +8,45 @@ window.CONFIG = {
 
   /* ---------- 1. HALAMAN LOGIN ---------- */
   login: {
-    title: 'Selamat Datang 🎂',
-    subtitle: 'Isi dulu ya sebelum mulai',
+    title: 'Haloo Ayang Cantikk 🎂',
+    subtitle: 'Isi dulu bole kali ya',
 
-    namaLabel: 'Siapa namamu?',
+    namaLabel: 'Isi nama dulu?',
     namaPlaceholder: 'Tulis nama lengkap...',
     // Jawaban nama yang benar (huruf besar/kecil & spasi berlebih diabaikan)
     namaJawaban: 'Firanindyta Hade',
 
-    umurLabel: 'Ulang tahun ke berapa sekarang?',
+    umurLabel: 'Cie ulang tahun ke berapa ni?',
     umurPlaceholder: 'Tulis angka...',
     // Jawaban yang benar
     umurJawaban: '26',
 
     tombol: 'Masuk',
     errorNama: 'Hmm, nama belum tepat. Coba lagi ya 😊',
-    errorUmur: 'Ulang tahun ke berapa sekarang? Jawabannya belum tepat, coba lagi 😉',
+    errorUmur: 'Cie ulang tahun ke berapa ni? belum tepat, coba lagi 😉',
   },
 
   /* ---------- 2. MENU UTAMA ---------- */
   menu: {
-    title: 'Happy Birthday! 🎉',
-    subtitle: 'Firanindyta Hade',
-    tombol: "Let's Go!",
+    title: 'Once Again, Happy Birthday! 🎉',
+    subtitle: 'Ayang',
+    tombol: "Let's Go Kita Main Duluw!",
   },
 
   /* ---------- 3. KOTAK TEKS SEBELUM SUB-GAME 1 ---------- */
   // Tulis bebas. Pakai \n untuk baris baru.
   introSubgame1: {
-    title: 'Pesan Untukmu 💌',
+    title: 'Pesan Untuk ayang 💌',
     teks:
-      'Tulis pesan pembuka kamu di sini...\n\n' +
+      'di Umur yang 26 tahun ini, semogaaa\n\n semua yang di doakan oleh ayang segera terwujud \n\n semogaa kita sama sama terus yaa \n\n Bismillah 2027 \n\n kita main game dulu buat dapet hadiahnya' +
       '(Ganti teks ini di file config.js bagian introSubgame1)',
     tombol: 'Lanjut',
   },
 
   /* ---------- 4. SUB-GAME 1: PILIH FOTO ---------- */
   subgame1: {
-    pertanyaan: 'Pilih SEMUA foto kenangan kita 💕',
-    petunjuk: 'Klik semua foto, lalu tekan Submit.',
+    pertanyaan: 'Pilih foto ayang yang paling cantik 💕',
+    petunjuk: 'Pilih foto, lalu tekan Submit.',
     tombol: 'Submit',
     // Salah / belum semua terpilih:
     errorSalah: 'Jawabannya salah, coba lagi ya!',
@@ -61,9 +61,9 @@ window.CONFIG = {
 
   /* ---------- 5. POP-UP TEKS SETELAH SUB-GAME 1 ---------- */
   afterSubgame1: {
-    title: 'Yeay, Benar! ✨',
+    title: 'Yeay, Bener! ✨',
     teks:
-      'Tulis pesan setelah sub-game 1 di sini...\n\n' +
+      'Mantap, ayang dah nyelesaiin game pertamanya,\n\n hadiah menunggu setelah ini ihiw' +
       'Sekarang lanjut ke petualangan Mario!',
     tombol: 'Mulai Game Mario',
   },
@@ -74,16 +74,16 @@ window.CONFIG = {
   // muncul konfirmasi dulu. Pilihan direkam & ditampilkan di review akhir.
   marioQuiz: [
     { // Blok ke-1
-      pertanyaan: 'Tulis pertanyaan blok 1 di sini?',
-      opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
+      pertanyaan: 'Pilih sarapannya mo apaa?',
+      opsi: ['Kuah kuah', 'Dimsum', 'Pilihan lainnya, bilang langsung'],
     },
     { // Blok ke-2
-      pertanyaan: 'Tulis pertanyaan blok 2 di sini?',
-      opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
+      pertanyaan: 'Pilih Hadiahh?',
+      opsi: ['Shopping Fashion', 'Bukuu CPNS', 'Sepatuu roda'],
     },
     { // Blok ke-3
-      pertanyaan: 'Tulis pertanyaan blok 3 di sini?',
-      opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
+      pertanyaan: 'Rekreasii pilihan?',
+      opsi: ['Lukis lukis', 'Gondola', 'Bilang langsung'],
     },
   ],
   // Kotak konfirmasi setelah memilih jawaban quiz.
@@ -101,27 +101,27 @@ window.CONFIG = {
 
   /* ---------- 8. POP-UP SAAT MENANG (SAMPAI FINISH) ---------- */
   win: {
-    title: 'Kamu Menang! 🏆',
+    title: 'Yeay dah Menang! 🏆',
     teks:
-      'Tulis pesan kemenangan di sini...\n\n' +
+      'Once Again\n\n' +
       'Selamat ulang tahun, sayang! 🎂🎉',
     tombol: 'Lihat Hasil',
   },
 
   /* ---------- 9. KOTAK REVIEW (jumlah eskrim + jawaban) ---------- */
   review: {
-    title: 'Hasil Petualanganmu 🎀',
+    title: 'Hasil Petualangan Ayang 🎀',
     eskrimLabel: 'Voucher eskrim terkumpul:',
-    jawabanLabel: 'Jawaban kamu:',
+    jawabanLabel: 'Jawaban Ayang:',
     belumDijawab: '(belum dijawab)',
     tombol: 'Submit',
   },
 
   /* ---------- 10. KOTAK TEKS PENUTUP (setelah Submit review) ---------- */
   afterReview: {
-    title: 'Terima Kasih 💝',
+    title: 'Happy 26 th 💝',
     teks:
-      'Tulis pesan penutup terakhir di sini...\n\n' +
+      '\n\n' +
       'Sampai jumpa di menu utama!',
     tombol: 'Kembali ke Menu',
   },
