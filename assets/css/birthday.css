@@ -214,3 +214,36 @@ body::after {
   text-align: left;
 }
 .quiz-opt:hover { background: #fff3c4; border-color: #FBD000; }
+
+/* ===== Konfirmasi quiz ===== */
+.quiz-confirm { margin-top: 18px; }
+.confirm-text { font-size: 20px; color: #333; margin: 0 0 6px; }
+.confirm-choice {
+  font-size: 22px; font-weight: bold; color: #049CD8;
+  margin: 0 0 18px;
+}
+.confirm-buttons { display: flex; gap: 12px; justify-content: center; }
+.btn.ghost {
+  background: #eee; color: #333; box-shadow: 0 5px 0 #b9b9b9;
+}
+.btn.ghost:hover { background: #f7f7f7; }
+
+/* ===== Kotak Review akhir ===== */
+.review-card { max-width: 560px; }
+.review-eskrim {
+  font-size: 24px; font-weight: bold; color: #E52521;
+  margin: 6px 0 16px;
+}
+.review-label {
+  font-size: 19px; color: #555; text-align: left; margin: 0 0 8px;
+}
+.review-list {
+  list-style: none; margin: 0 0 4px; padding: 0;
+  text-align: left;
+}
+.review-list li {
+  border: 3px solid #000; border-radius: 10px;
+  padding: 10px 14px; margin-bottom: 10px; background: #fafafa;
+}
+.rev-q { display: block; font-size: 16px; color: #777; margin-bottom: 4px; }
+.rev-a { display: block; font-size: 20px; color: #222; font-weight: bold; }

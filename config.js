@@ -70,32 +70,59 @@ window.CONFIG = {
 
   /* ---------- 6. QUIZ DI GAME MARIO (3 BLOK TANDA TANYA) ---------- */
   // Saat kepala Mario kena blok tanda tanya, game freeze & muncul soal ini.
-  // Jawaban pilihan ganda. "benar" = index opsi yang benar (mulai dari 0).
+  // TIDAK ADA jawaban salah: semua opsi bisa dipilih. Setelah klik opsi,
+  // muncul konfirmasi dulu. Pilihan direkam & ditampilkan di review akhir.
   marioQuiz: [
     { // Blok ke-1
       pertanyaan: 'Tulis pertanyaan blok 1 di sini?',
       opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
-      benar: 0,
     },
     { // Blok ke-2
       pertanyaan: 'Tulis pertanyaan blok 2 di sini?',
       opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
-      benar: 0,
     },
     { // Blok ke-3
       pertanyaan: 'Tulis pertanyaan blok 3 di sini?',
       opsi: ['Pilihan A', 'Pilihan B', 'Pilihan C'],
-      benar: 0,
     },
   ],
-  marioQuizError: 'Coba lagi dengan syarat',
+  // Kotak konfirmasi setelah memilih jawaban quiz.
+  quizKonfirmasi: {
+    teks: 'Yakin pilih jawaban ini?',
+    ya: 'Ya, lanjut',
+    batal: 'Ganti',
+  },
 
-  /* ---------- 7. POP-UP SAAT MENANG (SAMPAI FINISH) ---------- */
+  /* ---------- 7. ESKRIM (eks-koin) ---------- */
+  eskrim: {
+    label: 'Voucher Eskrim',   // tulisan di HUD samping Score
+    ikon: '🍦',                // ikon di HUD & di dalam game
+  },
+
+  /* ---------- 8. POP-UP SAAT MENANG (SAMPAI FINISH) ---------- */
   win: {
     title: 'Kamu Menang! 🏆',
     teks:
-      'Tulis pesan kemenangan / penutup di sini...\n\n' +
+      'Tulis pesan kemenangan di sini...\n\n' +
       'Selamat ulang tahun, sayang! 🎂🎉',
+    tombol: 'Lihat Hasil',
+  },
+
+  /* ---------- 9. KOTAK REVIEW (jumlah eskrim + jawaban) ---------- */
+  review: {
+    title: 'Hasil Petualanganmu 🎀',
+    eskrimLabel: 'Voucher eskrim terkumpul:',
+    jawabanLabel: 'Jawaban kamu:',
+    belumDijawab: '(belum dijawab)',
+    tombol: 'Submit',
+  },
+
+  /* ---------- 10. KOTAK TEKS PENUTUP (setelah Submit review) ---------- */
+  afterReview: {
+    title: 'Terima Kasih 💝',
+    teks:
+      'Tulis pesan penutup terakhir di sini...\n\n' +
+      'Sampai jumpa di menu utama!',
     tombol: 'Kembali ke Menu',
   },
 };

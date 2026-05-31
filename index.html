@@ -77,8 +77,28 @@
     <div class="card quiz-card">
       <div class="qmark">?</div>
       <h2 id="quiz-pertanyaan" class="title"></h2>
+      <!-- daftar opsi -->
       <div id="quiz-opsi" class="quiz-options"></div>
-      <p id="quiz-error" class="error-msg"></p>
+      <!-- langkah konfirmasi (tersembunyi sampai opsi dipilih) -->
+      <div id="quiz-konfirmasi" class="quiz-confirm" style="display:none">
+        <p id="quiz-konfirmasi-teks" class="confirm-text"></p>
+        <p id="quiz-pilihan" class="confirm-choice"></p>
+        <div class="confirm-buttons">
+          <button id="quiz-batal" class="btn ghost"></button>
+          <button id="quiz-ya" class="btn"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================== KOTAK REVIEW (akhir game) ====================== -->
+  <div id="review" class="overlay">
+    <div class="card review-card">
+      <h2 id="review-title" class="title"></h2>
+      <p id="review-eskrim" class="review-eskrim"></p>
+      <p id="review-jawaban-label" class="review-label"></p>
+      <ol id="review-list" class="review-list"></ol>
+      <button id="review-btn" class="btn"></button>
     </div>
   </div>
 

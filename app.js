@@ -137,7 +137,11 @@
   /* ============================================================
      4. GAME MARIO
      ============================================================ */
+  // Jawaban quiz yang dipilih pemain (per blok). Direset tiap mulai game.
+  let quizAnswers = [];
+
   function startMario() {
+    quizAnswers = (C.marioQuiz || []).map(() => null);
     showScreen('screen-game');
     // Beri waktu layar tampil sebelum game mulai (canvas perlu terlihat).
     setTimeout(() => {
@@ -149,31 +153,48 @@
     }, 50);
   }
 
-  /* ----- Quiz saat blok tanda tanya kena kepala (game di-freeze) ----- */
+  /* ----- Quiz saat blok tanda tanya kena kepala (game di-freeze) -----
+     Tidak ada jawaban salah: pilih opsi -> konfirmasi -> rekam -> lanjut. */
   function showQuiz(quizId) {
     const q = C.marioQuiz[quizId];
     if (!q) { // tidak ada soal -> langsung lanjut
       if (window.__marioResume) window.__marioResume();
       return;
     }
-    $('quiz-pertanyaan').textContent = q.pertanyaan;
-    $('quiz-error').textContent = '';
-    const box = $('quiz-opsi');
-    box.innerHTML = '';
-    q.opsi.forEach((teks, i) => {
-      const b = document.createElement('button');
-      b.className = 'quiz-opt';
-      b.textContent = teks;
-      b.onclick = () => {
-        if (i === q.benar) {
-          $('quiz').classList.remove('active');
-          if (window.__marioResume) window.__marioResume(); // lanjut main
-        } else {
-          $('quiz-error').textContent = C.marioQuizError;
-        }
+    const opsiBox = $('quiz-opsi');
+    const konfBox = $('quiz-konfirmasi');
+
+    function tampilOpsi() {
+      konfBox.style.display = 'none';
+      opsiBox.style.display = '';
+      opsiBox.innerHTML = '';
+      q.opsi.forEach((teks, i) => {
+        const b = document.createElement('button');
+        b.className = 'quiz-opt';
+        b.textContent = teks;
+        b.onclick = () => tampilKonfirmasi(i);
+        opsiBox.appendChild(b);
+      });
+    }
+
+    function tampilKonfirmasi(i) {
+      const k = C.quizKonfirmasi || {};
+      opsiBox.style.display = 'none';
+      konfBox.style.display = '';
+      $('quiz-konfirmasi-teks').textContent = k.teks || 'Yakin pilih jawaban ini?';
+      $('quiz-pilihan').textContent = '“' + q.opsi[i] + '”';
+      $('quiz-batal').textContent = k.batal || 'Ganti';
+      $('quiz-ya').textContent = k.ya || 'Ya';
+      $('quiz-batal').onclick = tampilOpsi; // balik milih lagi
+      $('quiz-ya').onclick = () => {
+        quizAnswers[quizId] = q.opsi[i];   // rekam jawaban
+        $('quiz').classList.remove('active');
+        if (window.__marioResume) window.__marioResume(); // lanjut main
       };
-      box.appendChild(b);
-    });
+    }
+
+    $('quiz-pertanyaan').textContent = q.pertanyaan;
+    tampilOpsi();
     $('quiz').classList.add('active');
   }
 
@@ -181,11 +202,48 @@
     showQuiz(e.detail.quizId);
   });
 
+  /* ----- Kotak Review akhir: jumlah eskrim + jawaban 3 pertanyaan ----- */
+  function showReview() {
+    const r = C.review || {};
+    const eskrimCfg = C.eskrim || {};
+    const score = window.__marioData && window.__marioData.entities &&
+      window.__marioData.entities.score;
+    const jumlahEskrim = score ? score.coinCount : 0;
+
+    $('review-title').textContent = r.title || 'Hasil';
+    $('review-eskrim').textContent =
+      (eskrimCfg.ikon || '🍦') + ' ' + (r.eskrimLabel || 'Voucher eskrim:') + ' ' + jumlahEskrim;
+    $('review-jawaban-label').textContent = r.jawabanLabel || 'Jawaban kamu:';
+
+    const list = $('review-list');
+    list.innerHTML = '';
+    (C.marioQuiz || []).forEach((q, i) => {
+      const li = document.createElement('li');
+      const jwb = quizAnswers[i] || (r.belumDijawab || '(belum dijawab)');
+      li.innerHTML = '<span class="rev-q">' + q.pertanyaan + '</span><span class="rev-a">' +
+        jwb + '</span>';
+      list.appendChild(li);
+    });
+
+    const btn = $('review-btn');
+    btn.textContent = r.tombol || 'Submit';
+    btn.onclick = () => {
+      $('review').classList.remove('active');
+      // kotak teks penutup -> baru kembali ke menu
+      showPopup(
+        { title: C.afterReview.title, teks: C.afterReview.teks, tombol: C.afterReview.tombol },
+        () => showScreen('screen-menu'),
+      );
+    };
+    $('review').classList.add('active');
+  }
+
   /* ----- Menang sampai finish ----- */
   window.addEventListener('mario-win', () => {
+    // 1) popup menang -> 2) review -> 3) teks penutup -> 4) menu
     showPopup(
       { title: C.win.title, teks: C.win.teks, tombol: C.win.tombol },
-      () => showScreen('screen-menu'), // kembali ke menu utama
+      showReview,
     );
   });
 
